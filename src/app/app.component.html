@@ -1,15 +1,11 @@
-<header>
-  <h1>{{ title | titlecase }}</h1>
-</header>
+<app-global-error></app-global-error>
+
+
 <div class="content">
-  <!-- <app-product
-    [product]="products[0]"
-  ></app-product>
+  <h1>{{ title | titlecase }}</h1>
+<p *ngIf="loading">Loading...</p>
   <app-product
-    [product]="products[1]"
-  ></app-product> -->
-  <app-product
-    *ngFor="let product of products, let i = index"
+    *ngFor="let product of products$ | async; let i = index"
     [product]="product"
   ></app-product>
 </div>
