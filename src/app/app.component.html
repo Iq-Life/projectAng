@@ -3,9 +3,19 @@
 
 <div class="content">
   <h1>{{ title | titlecase }}</h1>
-<p *ngIf="loading">Loading...</p>
-  <app-product
-    *ngFor="let product of products; let i = index"
-    [product]="product"
-  ></app-product>
+
+  <input
+  type="text"
+  placeholder="Search by name"
+  [(ngModel)]="term"
+  >
+
+  <p *ngIf="loading">Loading...</p>
+  <div *ngIf="products">
+    <app-product
+
+      *ngFor="let product of products | filterProducts: term; let i = index"
+      [product]="product"
+    ></app-product>
+  </div>
 </div>
