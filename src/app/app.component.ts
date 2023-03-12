@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'Products'
   // products: IProduct[] = []
   loading= false
-  products$: Observable<IProduct[]>
+  products:IProduct[] = []
 
   constructor(private productsService: ProductsService){
 
@@ -21,12 +21,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void{
     this.loading = true
-    this.products$ = this.productsService.getAll().pipe(
-      tap(() => this.loading = false)
-    )
-    // .subscribe(products => {
-    //   this.products = products
-    //   this.loading = false
-    // })
+    this.productsService.getAll().subscribe(products => {
+      this.products = products
+      this.loading = false
+    })
   }
 }
