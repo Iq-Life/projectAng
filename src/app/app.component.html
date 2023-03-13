@@ -9,7 +9,7 @@
   placeholder="Search by name"
   [(ngModel)]="term"
   >
-
+  <app-map></app-map>
   <p *ngIf="loading">Loading...</p>
   <div *ngIf="products">
     <app-product

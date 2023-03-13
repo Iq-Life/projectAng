@@ -8,18 +8,22 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { MapComponent } from './components/map/map.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     GlobalErrorComponent,
-    FilterProductsPipe
+    FilterProductsPipe,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    LeafletModule
   ],
   providers: [],
   bootstrap: [AppComponent]
