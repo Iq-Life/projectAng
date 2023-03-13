@@ -25,6 +25,13 @@ h2 {
 p {
   font-size: 1.2rem;
 }
+button {
+  padding: 5px;
+  min-width: 120px;
+  border-radius: 7px;
+  border: 1px solid black;
+  cursor: pointer;
+}
 // .leaflet-attribution-flag {
   
 //     display: none !important;

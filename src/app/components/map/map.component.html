@@ -1,4 +1,15 @@
-<div style="height: 60vh; width: 60vw;"
-     leaflet 
-     [leafletOptions]="options">
+<div class="map_container">
+     <button 
+          [ngClass]="{
+               'hide': isMap,
+               'show': !isMap
+          }"
+          (click)="isMap=!isMap"
+     >
+          map
+     </button>
+     <div *ngIf="isMap" style="height: 60vh; width: 60vw;"
+          leaflet 
+          [leafletOptions]="options">
+     </div>
 </div>

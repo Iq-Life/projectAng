@@ -12,11 +12,6 @@
   &_price {
 
   }
-  &_buttons_details {
-    border-radius: 7px;
-    border: 1px solid black;
-    cursor: pointer;
-  }
 
   &_information {
 
@@ -36,10 +31,7 @@
       font-weight: 800;
     }
   }
-  button {
-    padding: 5px;
-    min-width: 120px;
-  }
+  
 }
 
 .show {

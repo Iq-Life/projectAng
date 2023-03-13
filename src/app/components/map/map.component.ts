@@ -11,7 +11,8 @@ export class MapComponent implements OnInit, AfterViewInit  {
   constructor(private placeSvc: PlacesService) {
 
   }
-
+  isMap = false
+  
   options = {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
