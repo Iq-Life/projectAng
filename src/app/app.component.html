@@ -3,13 +3,16 @@
 
 <div class="content">
   <h1>{{ title | titlecase }}</h1>
-
+  
   <input
   type="text"
   placeholder="Search by name"
   [(ngModel)]="term"
   >
-  <app-map></app-map>
+  <div class="content_recording">
+    <app-recording-vidio-and-audio></app-recording-vidio-and-audio>
+  </div>
+  <!-- <app-map></app-map> -->
   <p *ngIf="loading">Loading...</p>
   <div *ngIf="products">
     <app-product

@@ -10,13 +10,15 @@ import { GlobalErrorComponent } from './components/global-error/global-error.com
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { MapComponent } from './components/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { RecordingVidioAndAudioComponent } from './recording-vidio-and-audio/recording-vidio-and-audio.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     GlobalErrorComponent,
     FilterProductsPipe,
-    MapComponent
+    MapComponent,
+    RecordingVidioAndAudioComponent
   ],
   imports: [
     BrowserModule,

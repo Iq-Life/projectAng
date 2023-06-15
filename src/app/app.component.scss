@@ -11,6 +11,11 @@ header {
   // display: grid;
   // grid-template-columns: repeat(4, 1fr);
   // row-gap: 1em;
+
+  &_recording {
+    margin: 40px 0;
+  }
+
   input {
     box-sizing: border-box;
     margin: 10px 0;
