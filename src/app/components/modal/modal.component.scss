@@ -1,0 +1,30 @@
+.modal {
+  box-sizing: border-box;
+  background-color: rgba(0,0,0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.modal_window {
+  background-color: white;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 600px;
+  
+  &-title {
+    text-align: center;
+    // font-weight: 800;
+  }
+}
+// bg-black/50 fixed top-0 right-0 left-0 bottom-0
+
+
+// w-[500px] absolute top-16 rounded p-6 bg-white left-1/2 -translate-x-1/2
+
+// text-center mb-2 text-lg

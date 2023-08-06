@@ -11,6 +11,8 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { MapComponent } from './components/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { RecordingVidioAndAudioComponent } from './recording-vidio-and-audio/recording-vidio-and-audio.component';
+import { ModalAddProductComponent } from './components/product/modal-edit-product/modal-add-product.component';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { RecordingVidioAndAudioComponent } from './recording-vidio-and-audio/rec
     GlobalErrorComponent,
     FilterProductsPipe,
     MapComponent,
-    RecordingVidioAndAudioComponent
+    RecordingVidioAndAudioComponent,
+    ModalAddProductComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

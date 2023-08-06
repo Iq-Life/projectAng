@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from './models/product';
+import { Product } from './models/product';
 import { product as data } from './data/products';
 import { ProductsService } from './services/products.cervice';
 import { Observable, tap } from 'rxjs';
@@ -12,7 +12,7 @@ import { Observable, tap } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'Products'
   loading= false
-  products:IProduct[] = []
+  products:Product[] = []
   term: string = '';
 
   constructor(private productsService: ProductsService){
