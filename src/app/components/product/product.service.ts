@@ -33,16 +33,7 @@ export class ProductsService {
   }
 
   getCountry(): Observable<CountryDTO[]> {
-    return this.http
-      .get<CountryDTO[]>(`https://fakestoreapi.com/products`)
-      .pipe(
-        catchError(() => {
-          return of([] as CountryDTO[]);
-        }),
-        map(() =>
-        Countries
-        )
-      );
+    return of(Countries);
   }
 
   private errorHandler(error: HttpErrorResponse) {

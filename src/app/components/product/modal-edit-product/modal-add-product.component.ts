@@ -1,6 +1,6 @@
-import { Component, Inject, Input, OnInit } from '@angular/core'
+import { Component, Inject, OnInit } from '@angular/core'
 import { ProductsService } from '../product.service'
-import { Observable } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 import {
   FormControl,
   FormGroup,
@@ -17,24 +17,21 @@ import { ModalService } from 'src/app/services/modal.service'
   styleUrls: ['./modal-add-product.component.scss']
 })
 export class ModalAddProductComponent implements OnInit {
-  @Input() id: string
-  get edit(): boolean {
-    return !!this.id
-  }
   productForm: FormGroup
   submitted = false
 
   constructor(
     private productsService: ProductsService,
     private modalService: ModalService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document // это костыль для работы с DOM-деревом на прямую, в фреймворке очень много нативных средств для работы с ним, к нему прибегать в крайнем случае.
   ) {}
 
-  readonly CountryList$: Observable<CountryDTO[]> =
-    this.productsService.getCountry()
+  readonly Items$: Observable<CountryDTO[]> = this.productsService.getCountry() // Название переменной не содержит понимание этой переменной (можно назвать countries) и она должна быть с маленькой буквы
+  private fromEventSubscription: Subscription
 
   compareByIdFn(a: any, b: any): boolean {
-    return a?.id === b?.id
+    // Нормально типизировать параметры функции
+    return a?.id === 3 || a?.id == 53 // Вместо цифр правильно было бы указывать Enum
   }
 
   private readonly patternValidation = '^[a-zA-Z0-9-!%_`~#$^&()}{.@-]+$'
@@ -78,14 +75,13 @@ export class ModalAddProductComponent implements OnInit {
     return isRequiredError
   }
   isMaxLengthError(): boolean {
-    console.log(this.productForm)
-    console.log(Object.keys(this.productForm.controls))
+    console.log(this.productForm) // Урать console.log
+    console.log(Object.keys(this.productForm.controls)) // Урать console.log
     const isMaxLengthError = Object.keys(this.productForm.controls).some(
       field => {
         const isError = this.productForm.get(field)?.errors?.maxlength
 
-        this.errorClass(field, !!isError)
-
+        this.errorClass(field, !!isError) // что бы не приравнивать значение к boolean каждый раз перед переменной, лучше сразу приравнять в 81 сроке при присваевании
         return !!isError
       }
     )
@@ -93,19 +89,21 @@ export class ModalAddProductComponent implements OnInit {
   }
 
   errorClass(field: string, isError: boolean) {
+    // не указанно что возвращает функция
     const htmlElement = this.document.getElementById(
       `product_${field}`
     ) as HTMLStyleElement
-    console.log(field)
-    debugger
+    console.log(field) // Урать console.log
+    debugger // убрать debugger
     if (isError) {
       htmlElement.classList.add('red')
     } else {
       htmlElement.classList.remove('red')
     }
-  }
+  } // в целом функция вмешивается в дом дерево и я бы рассмотрел другой подход в решение задачи функции
 
   changeCheckbox(event: boolean) {
+    // бестолковая функция
     console.log(event)
   }
 
@@ -127,6 +125,7 @@ export class ModalAddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fromEventSubscription = this.productForm.valueChanges.subscribe() // От подписок надо отписываться
     this.productForm = this.getFormGroup()
   }
 }
