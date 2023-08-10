@@ -1,0 +1,31 @@
+.product_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &_field {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    &_label {
+      font-weight: 800;
+    }
+  }
+}
+
+.red {
+  color: red;
+  border-color: red;
+}
+
+.btn {
+  margin: 40px auto 20px auto;
+}
+
+.field-validation-error {
+  position: absolute;
+  bottom: 65px;
+  color: red;
+}

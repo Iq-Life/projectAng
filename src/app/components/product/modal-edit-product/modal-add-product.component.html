@@ -1,0 +1,59 @@
+<form class="product_form" [formGroup]="productForm">
+  <div class="product_form_field">
+    <label class="product_form_field_label" for="title"
+      >Название продукта</label
+    >
+    <input
+      formControlName="title"
+      id="product_title"
+      type="text"
+      class="product_form_field_input_product_title"
+    />
+  </div>
+  <div class="product_form_field">
+    <div class="product_form_field_label">Цена продукта</div>
+    <input
+      formControlName="price"
+      id="product_price"
+      type="number"
+      class="product_form_field_input_price"
+    />
+  </div>
+  <div class="product_form_field">
+    <div class="product_form_field_label">Рассрочка на продукт</div>
+    <input
+      formControlName="installmentPlan"
+      id="product_installmentPlan"
+      type="checkbox"
+      class="product_form_field_input_installmentPlan"
+      (ngModelChange)="changeCheckbox($event)"
+    />
+  </div>
+  <div class="product_form_field">
+    <div class="product_form_field_label">Страна производства</div>
+    <select
+      id="product_countryOfOrigin"
+      class="product_form_field_select_dropdown_installmentPlan"
+      formControlName="countryOfOrigin"
+      PlaceHolder="Выберите страну производства"
+    >
+      <option
+        *ngFor="let item of Items$ | async"
+        [label]="item.countryName"
+        [value]="item.id"
+      ></option>
+    </select>
+  </div>
+  <div
+    *ngIf="productForm.status === 'INVALID' && submitted"
+    class="field-validation-error"
+  >
+    <small *ngIf="isRequiredError()" class="field-validation-error__text"
+      >Не все поля заполнены</small
+    >
+    <small *ngIf="!isRequiredError() && isMaxLengthError()" class="field-validation-error__text"
+      >Максимальное кол-во символов 256</small
+    >
+  </div>
+  <button class="btn" (click)="submit()" type="submit">сохранить</button>
+</form>
