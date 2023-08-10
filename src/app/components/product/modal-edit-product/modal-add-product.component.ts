@@ -23,15 +23,15 @@ export class ModalAddProductComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private modalService: ModalService,
-    @Inject(DOCUMENT) private document: Document // это костыль для работы с DOM-деревом на прямую, в фреймворке очень много нативных средств для работы с ним, к нему прибегать в крайнем случае.
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
-  readonly Items$: Observable<CountryDTO[]> = this.productsService.getCountry() // Название переменной не содержит понимание этой переменной (можно назвать countries) и она должна быть с маленькой буквы
+  readonly Items$: Observable<CountryDTO[]> = this.productsService.getCountry()
   private fromEventSubscription: Subscription
 
   compareByIdFn(a: any, b: any): boolean {
-    // Нормально типизировать параметры функции
-    return a?.id === 3 || a?.id == 53 // Вместо цифр правильно было бы указывать Enum
+
+    return a?.id === 3 || a?.id == 53
   }
 
   private readonly patternValidation = '^[a-zA-Z0-9-!%_`~#$^&()}{.@-]+$'
@@ -75,13 +75,13 @@ export class ModalAddProductComponent implements OnInit {
     return isRequiredError
   }
   isMaxLengthError(): boolean {
-    console.log(this.productForm) // Урать console.log
-    console.log(Object.keys(this.productForm.controls)) // Урать console.log
+    console.log(this.productForm)
+    console.log(Object.keys(this.productForm.controls))
     const isMaxLengthError = Object.keys(this.productForm.controls).some(
       field => {
         const isError = this.productForm.get(field)?.errors?.maxlength
 
-        this.errorClass(field, !!isError) // что бы не приравнивать значение к boolean каждый раз перед переменной, лучше сразу приравнять в 81 сроке при присваевании
+        this.errorClass(field, !!isError)
         return !!isError
       }
     )
@@ -89,21 +89,21 @@ export class ModalAddProductComponent implements OnInit {
   }
 
   errorClass(field: string, isError: boolean) {
-    // не указанно что возвращает функция
+
     const htmlElement = this.document.getElementById(
       `product_${field}`
     ) as HTMLStyleElement
-    console.log(field) // Урать console.log
-    debugger // убрать debugger
+    console.log(field)
+    debugger
     if (isError) {
       htmlElement.classList.add('red')
     } else {
       htmlElement.classList.remove('red')
     }
-  } // в целом функция вмешивается в дом дерево и я бы рассмотрел другой подход в решение задачи функции
+  } 
 
   changeCheckbox(event: boolean) {
-    // бестолковая функция
+
     console.log(event)
   }
 
@@ -125,7 +125,7 @@ export class ModalAddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fromEventSubscription = this.productForm.valueChanges.subscribe() // От подписок надо отписываться
+    this.fromEventSubscription = this.productForm.valueChanges.subscribe()
     this.productForm = this.getFormGroup()
   }
 }
